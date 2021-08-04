@@ -1,6 +1,7 @@
 package br.com.triersistemas.validapessoa;
 
 import java.math.BigDecimal;
+import java.util.SplittableRandom;
 
 public class PessoaJuridica extends Pessoa {
 
@@ -24,8 +25,21 @@ public class PessoaJuridica extends Pessoa {
 
 	@Override
 	public String gerarDocumento() {
-		// TODO Auto-generated method stub
-		return null;
+		Integer[] vetor = new Integer [14];
+		String[] vetorString = new String[14];
+		String cnpj = "";
+		
+		for (int i = 0; i < 14; i++) {
+			 vetor[i] = new SplittableRandom().nextInt(0, 10);
+			 vetorString[i] = String.valueOf(vetor[i]);
+		}
+		
+		for (int i = 0; i < vetorString.length; i++) {
+			cnpj = cnpj + vetorString[i];
+		}
+		System.out.println(cnpj.length());
+		
+		return cnpj;
 	}
 
 	@Override
@@ -62,7 +76,6 @@ public class PessoaJuridica extends Pessoa {
 
 	private BigDecimal retornaSegundoDigito() {
 		char[] documento = getDocumento().toCharArray();
-		long ultimoCaracter = Long.valueOf(String.valueOf(documento[11])); 
 		Long total = Long.valueOf(0);
 		BigDecimal calc= BigDecimal.valueOf(0);		
 	

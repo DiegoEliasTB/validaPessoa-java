@@ -1,6 +1,7 @@
 package br.com.triersistemas.validapessoa;
 
 import java.math.BigDecimal;
+import java.util.SplittableRandom;
 
 public class PessoaFisica extends Pessoa {
 
@@ -24,8 +25,20 @@ public class PessoaFisica extends Pessoa {
 
 	@Override
 	public String gerarDocumento() {
-		// TODO Auto-generated method stub
-		return null;
+		Integer[] vetor = new Integer [11];
+		String[] vetorString = new String[11];
+		String cpf = "";
+		
+		for (int i = 0; i < 11; i++) {
+			 vetor[i] = new SplittableRandom().nextInt(0, 10);
+			 vetorString[i] = String.valueOf(vetor[i]);
+		}
+		
+		for (int i = 0; i < vetorString.length; i++) {
+			cpf += vetorString[i];
+		}
+		
+		return cpf;
 	}
 
 	@Override

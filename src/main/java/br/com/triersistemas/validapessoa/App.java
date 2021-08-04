@@ -11,6 +11,6 @@ public class App {
         fisica.verificar();
         
         PessoaJuridica juridica = new PessoaJuridica("18781203000128");
-        juridica.verificar();
+        juridica.verificar();        
     }
 }
